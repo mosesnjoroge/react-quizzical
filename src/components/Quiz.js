@@ -25,10 +25,10 @@ export default function Quiz(props){
   return (
     <div>
       <div>
-        <h3>{props.q}</h3>
+        <h3>{props.quizElements}</h3>
         {answerElements}
       </div>
-      <div>
+      <div className="quiz-score">
         <h3>You scored {props.correct} correct answers</h3>
       </div>
     </div>

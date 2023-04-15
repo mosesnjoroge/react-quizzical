@@ -32,7 +32,7 @@ function App() {
     }, [count]
   )
 
-  const questionElements = questions ? questions.map(question => {
+  const quizElements = questions ? questions.map(question => {
     return (
       <Quiz
         id = {question.id}
@@ -51,12 +51,11 @@ function App() {
   const styles = {
     background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"}
 
-  // // loop for printing out questions
 
-
-  // Method to submit form and create meme
+// Method to submit form and create meme
   const handleSubmit = event =>{
     event.preventDefault();
+    event.target.value(setStarted = );
   };
 
   return (
@@ -67,9 +66,9 @@ function App() {
       <div className='content-container mt-3'>
         { started ?
           <div className='start-content-container'>
-            {questionElements}
+            {quizElements}
             <div className='end-div'>
-              <button onClick = {handleSubmit} className='check'>check answer</button>
+              <button className='check'>check answer</button>
             </div>
           </div>
           :
@@ -77,12 +76,6 @@ function App() {
             start={start}
           />
         }
-      </div>
-      <div className='quiz--score'>
-        <span>
-
-
-        </span>
       </div>
     </div>
   );
