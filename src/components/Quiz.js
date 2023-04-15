@@ -5,7 +5,7 @@ import React from "react";
 export default function Quiz(props){
 
   let answers = props.q.answers
-  const answerElement = answers.map(answer => {
+  const answerElements = answers.map(answer => {
     let id = null;
     if (props.q.checked){
       if (props.q.correct === answer){
@@ -18,12 +18,15 @@ export default function Quiz(props){
         id = 'not-selected'
       }
     }
+    return (
+      <button key={nanoid()} id={id} className={answer === props.q.selected? "answer selected" : "answer"}>{answer}</button>
+    )
   })
   return (
     <div>
       <div>
         <h3>{props.q}</h3>
-        <button key = {nanoid()} id = {id} className="">{answerElement}</button>
+        {answerElements}
       </div>
       <div>
         <h3>You scored {props.correct} correct answers</h3>
