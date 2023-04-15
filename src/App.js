@@ -14,20 +14,21 @@ function App() {
 
 
 
-  //  // componentDidMount() method to fetch questions from the API
-  // componentDidMount = ()=>{
+  // method to fetch questions from the API
+  componentDidMount = ()=>{
 
-  //   // Fetching data from the API
-  //   fetch("https://opentdb.com/api.php?amount=5&type=multiple")
-  //     // Converting the promise received into JSON
-  //     .then(response => response.json())
-  //     .then(content =>
-  //         // Updating state variables
-  //       setQuestions({
-  //         allMemeImgs: content.data.memes
-  //       })
-  //     );
-  // }
+    // Fetching data from the API
+    fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+      // Converting the promise received into JSON
+      .then(response => response.json())
+      .then(content =>
+          // Updating state variables
+        setQuestions({
+          allMemeImgs: content.data.memes
+        })
+      );
+  }
+
   // // loop for printing out questions
 
 
