@@ -1,3 +1,15 @@
 .App {
   text-align: center;
 }
+
+/* .start-content-container {
+  display: flex;
+  justify-content: center;
+  align-content:center;
+} */
+
+.homepage{
+  display: flex;
+  justify-content: center;
+  align-content:center;
+}

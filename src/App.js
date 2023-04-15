@@ -1,9 +1,10 @@
+import Quiz from './components/Quiz';
+import Menu from './components/Menu';
 import { useEffect, useState } from 'react';
 import './App.css';
-// import Quiz from './components/Quiz';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid';
-import Menu from './components/Menu';
+// import  Bootstrap  from 'react-bootstrap';
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
     }, [count]
   )
 
-  const questionElement = questions ? questions.map(question => {
+  const questionElements = questions ? questions.map(question => {
     return (
       <Quiz
         id = {question.id}
@@ -61,10 +62,10 @@ function App() {
 
   return (
     <div className="App">
-      <div className='content-container'>
+      <div className='content-container mt-3 container'>
         { started ?
           <div className='start-content-container'>
-
+            {questionElements}
             <div className='end-div'>
               <button className='check'>check answer</button>
             </div>
@@ -75,11 +76,10 @@ function App() {
           />
         }
       </div>
-      {/* <Quiz/> */}
       <div className='quiz--score'>
         <span>
-          <h3>You scored x{} correct answers</h3>
-          <button>Play again</button>
+
+          {/* <button>Play again</button> */}
         </span>
       </div>
     </div>
