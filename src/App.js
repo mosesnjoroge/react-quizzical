@@ -55,7 +55,7 @@ function App() {
 // Method to submit form and create meme
   const handleSubmit = event =>{
     event.preventDefault();
-    event.target.value(setStarted = );
+    // event.target.value(setStarted = );
   };
 
   return (
