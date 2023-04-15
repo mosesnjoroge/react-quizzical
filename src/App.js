@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Quiz from './components/Quiz';
+// import Quiz from './components/Quiz';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid';
 import Menu from './components/Menu';
@@ -23,13 +23,23 @@ function App() {
         const data = await res.json()
         let q = []
         data.results.forEach(question => {
-          q.push({id:nanoid(),question:question.question,correct: question.correct_answer,selected: null, checked:false,answers:shuffleArray([...questions.incorrect_answers, question.correct_answers])})
+          q.push({id:nanoid(),question:question.question,correct: question.correct_answer,selected: null, checked:false,answers:shuffleArray([...question.incorrect_answers, question.correct_answers])})
         })
         setQuestions(q)
       }
       getQuestion()
     }, [count]
   )
+
+  const questionElement = questions ? questions.map(question => {
+    return (
+      <Quiz
+        id = {question.id}
+        key = {question.id}
+        q = {question}
+      />
+    )
+  }):[]
 
   function start() {
     setStarted(x => !x)
