@@ -21,7 +21,7 @@ function App() {
   //     .then(response => response.json())
   //     .then(content =>
   //         // Updating state variables
-  //       this.setState({
+  //       setQuestions({
   //         allMemeImgs: content.data.memes
   //       })
   //     );
