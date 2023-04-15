@@ -3,17 +3,16 @@ import './App.css';
 import Quiz from './components/Quiz';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid';
+import Menu from './components/Menu';
 
 function App() {
 
   // states
   const[questions,setQuestions] = useState([])
-  /* eslint-disable */
-    const[started, setStarted] = useState(false)
-    const[correct,setCorrect] = useState(0)
-    const[checked, setChecked] = useState(false)
-    const[count, setCount] = useState(0)
-  /* eslint-enable */
+  const[started, setStarted] = useState(false)
+  const[correct,setCorrect] = useState(0)
+  const[checked, setChecked] = useState(false)
+  const[count, setCount] = useState(0)
 
   // method to fetch questions from the API
   const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5)
@@ -26,11 +25,15 @@ function App() {
         data.results.forEach(question => {
           q.push({id:nanoid(),question:question.question,correct: question.correct_answer,selected: null, checked:false,answers:shuffleArray([...questions.incorrect_answers, question.correct_answers])})
         })
-        setQuestions()
+        setQuestions(q)
       }
-    }
+      getQuestion()
+    }, [count]
   )
 
+  function start() {
+    setStarted(x => !x)
+  }
 
   // // loop for printing out questions
 
@@ -48,7 +51,21 @@ function App() {
 
   return (
     <div className="App">
-      <Quiz/>
+      <div className='content-container'>
+        { started ?
+          <div className='start-content-container'>
+
+            <div className='end-div'>
+              <button className='check'>check answer</button>
+            </div>
+          </div>
+          :
+          <Menu
+            start={start}
+          />
+        }
+      </div>
+      {/* <Quiz/> */}
       <div className='quiz--score'>
         <span>
           <h3>You scored x{} correct answers</h3>
