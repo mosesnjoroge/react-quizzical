@@ -12,6 +12,8 @@ function App() {
   const[checked, setChecked] = useState(false)
   const[count, setCount] = useState(0)
 
+
+
   //  // componentDidMount() method to fetch questions from the API
   // componentDidMount = ()=>{
 
