@@ -1,33 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Quiz from './components/Quiz';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { nanoid } from 'nanoid';
 
 function App() {
 
   // states
   const[questions,setQuestions] = useState([])
-  const[started, setStarted] = useState(false)
-  const[correct,setCorrect] = useState(0)
-  const[checked, setChecked] = useState(false)
-  const[count, setCount] = useState(0)
-
-
+  /* eslint-disable */
+    const[started, setStarted] = useState(false)
+    const[correct,setCorrect] = useState(0)
+    const[checked, setChecked] = useState(false)
+    const[count, setCount] = useState(0)
+  /* eslint-enable */
 
   // method to fetch questions from the API
-  componentDidMount = ()=>{
+  const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5)
 
-    // Fetching data from the API
-    fetch("https://opentdb.com/api.php?amount=5&type=multiple")
-      // Converting the promise received into JSON
-      .then(response => response.json())
-      .then(content =>
-          // Updating state variables
-        setQuestions({
-          allMemeImgs: content.data.memes
+  useEffect (() => {
+      async function getQuestion(){
+        const res = await fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+        const data = await res.json()
+        let q = []
+        data.results.forEach(question => {
+          q.push({id:nanoid(),question:question.question,correct: question.correct_answer,selected: null, checked:false,answers:shuffleArray([...questions.incorrect_answers, question.correct_answers])})
         })
-      );
-  }
+        setQuestions()
+      }
+    }
+  )
+
 
   // // loop for printing out questions
 
