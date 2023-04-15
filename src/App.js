@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid';
-// import  Bootstrap  from 'react-bootstrap';
+
 
 function App() {
 
@@ -46,6 +46,11 @@ function App() {
     setStarted(x => !x)
   }
 
+  // stlyling for homepage
+
+  const styles = {
+    background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"}
+
   // // loop for printing out questions
 
 
@@ -61,8 +66,11 @@ function App() {
   // };
 
   return (
-    <div className="App">
-      <div className='content-container mt-3 container'>
+    <div
+      className="App"
+      style = {styles}
+    >
+      <div className='content-container mt-3'>
         { started ?
           <div className='start-content-container'>
             {questionElements}
@@ -79,7 +87,7 @@ function App() {
       <div className='quiz--score'>
         <span>
 
-          {/* <button>Play again</button> */}
+
         </span>
       </div>
     </div>
