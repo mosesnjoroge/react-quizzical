@@ -3,6 +3,7 @@ import React from "react";
 
 export default function Quiz(props){
  let answers = props.q.answers
+
   return (
     <div>
       <div>

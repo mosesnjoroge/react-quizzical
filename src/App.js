@@ -54,16 +54,10 @@ function App() {
   // // loop for printing out questions
 
 
-  // // Method to submit form and create meme
-  // handleSubmit = event =>{
-  //   event.preventDefault();
-  //   const { allMemeImgs } = this.state;
-  //   const rand = allMemeImgs[
-  //     Math.floor(Math.random() * allMemeImgs.length)].url;
-  //   this.setState({
-  //     randomImg: rand
-  //   });
-  // };
+  // Method to submit form and create meme
+  const handleSubmit = event =>{
+    event.preventDefault();
+  };
 
   return (
     <div
@@ -75,7 +69,7 @@ function App() {
           <div className='start-content-container'>
             {questionElements}
             <div className='end-div'>
-              <button className='check'>check answer</button>
+              <button onClick = {handleSubmit} className='check'>check answer</button>
             </div>
           </div>
           :
