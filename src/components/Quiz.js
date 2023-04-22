@@ -22,14 +22,12 @@ export default function Quiz(props){
       <button key={nanoid()} id={id} className={answer === props.q.selected? "answer selected" : "answer"}>{answer}</button>
     )
   })
+
   return (
     <div>
       <div>
         <h3>{props.q.question}</h3>
         {answerElements}
-      </div>
-      <div className="quiz-score">
-        <h3>You scored {props.correct} correct answers</h3>
       </div>
     </div>
   );

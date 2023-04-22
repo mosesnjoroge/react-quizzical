@@ -10,7 +10,7 @@ function App() {
 
   // states
   const[questions,setQuestions] = useState([])
-  const[started, setStarted] = useState(false)
+  const[started, setStarted] = useState(true)
   const[correct,setCorrect] = useState(0)
   const[checked, setChecked] = useState(false)
   const[count, setCount] = useState(0)
@@ -52,11 +52,34 @@ function App() {
     background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"}
 
 
-// Method to submit form and create meme
-  const handleSubmit = event =>{
-    event.preventDefault();
-    // event.target.value(setStarted = );
-  };
+// Method to
+  function handleCheck() {
+    let selected = true
+    questions.forEach(question => {
+      if (question.selected === null){
+        selected = false
+        return
+      }
+    })
+    if (!selected){
+      return
+    }
+    setQuestions(questons => questions.map(question =>{
+      return {...question, checked:true}
+    }))
+    setChecked(true)
+    let correct = 0
+    questions.forEach(question => {
+      if (question.correct === question.selected){
+        correct += 1
+      }
+    })
+    setCorrect(correct)
+  }
+  // handleSubmit = event =>{
+  //   event.preventDefault();
+  //   // event.target.value(setStarted = );
+  // };
 
   return (
     <div
@@ -69,6 +92,9 @@ function App() {
             {quizElements}
             <div className='end-div'>
               <button className='check'>check answer</button>
+            </div>
+            <div className="quiz-score">
+              <h3>You scored {correct} correct answers</h3>
             </div>
           </div>
           :
