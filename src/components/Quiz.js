@@ -1,10 +1,18 @@
 import { nanoid } from "nanoid";
 import React from "react";
-// import nanoid from 'nanoid';
+
 
 export default function Quiz(props){
 
   let answers = props.q.answers
+
+  function handleClick(answer) {
+    if (props.q.checked){
+      return
+    }
+    props.handleClickAnswer(props.id, answer)
+  }
+
   const answerElements = answers.map(answer => {
     let id = null;
     if (props.q.checked){
@@ -19,16 +27,22 @@ export default function Quiz(props){
       }
     }
     return (
-      <button key={nanoid()} id={id} className={answer === props.q.selected? "answer selected" : "answer"}>{answer}</button>
+      <button
+        key={nanoid()}
+        id={id}
+        className={answer === props.q.selected? "answer selected" : "answer"}
+        onClick={() => handleClick(answer)}
+        >
+          {answer}
+      </button>
     )
   })
 
   return (
-    <div>
-      <div>
-        <h3>{props.q.question}</h3>
-        {answerElements}
-      </div>
+    <div className="question-container">
+      <h3 className="question-title">{props.q.question}</h3>
+      {answerElements}
+      <div className="line"></div>
     </div>
-  );
+  )
 }

@@ -1,13 +1,13 @@
 import React from 'react';
-// import  Button  from 'react-bootstrap/Button';
 
 export default function Menu(props) {
 
+
   return(
       <div className='homepage'>
-        <h2>Welcome to Quizical</h2>
+        <h2 className='page-title'>Welcome to Quizical</h2>
         <div>
-          <button onClick={props.handleSubmit}>Start</button>
+          <button onClick={() => props.start()}>Start</button>
         </div>
       </div>
   )
