@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid';
-
+import { Container } from 'react-bootstrap';
 
 function App() {
 
@@ -42,8 +42,7 @@ function App() {
   const styles = {
     background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"}
 
-
-  // Method to
+  // Method to check answer status
   function handleCheck() {
     let selected = true
     questions.forEach(question => {
@@ -68,17 +67,20 @@ function App() {
     setCorrect(correct)
   }
 
+  // btn method associating answer with question
   function handleClickAnswer (id, answer){
     setQuestions(questions => questions.map(question =>{
       return question.id === id ? {...question, selected:answer} :question
     }))
   }
 
+  // restart game
   function handlePlayAgain() {
     setCount(count => count +1)
     setChecked(false)
   }
 
+  // render quiz elements
   const quizElements = questions ? questions.map(question => {
     return (
       <Quiz
@@ -98,13 +100,14 @@ function App() {
       <div className='content-container mt-3'>
         { started?
             <div className='start-content-container'>
+              <Container>
                 {quizElements}
                 <div className='end-div'>
-                  <button className='check' onClick={checked ? handlePlayAgain : handleCheck}>{checked ? 'Play Again' : 'Check Answer'}</button>
+                  <button className='check mt-4' onClick={checked ? handlePlayAgain() : handleCheck()}>{checked ? 'Play Again' : 'Check Answer'}</button>
+                  <button className='m-2 danger'>Back</button>
+                  {checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
                 </div>
-                <div className="quiz-score">
-                  <h3>You scored {correct} correct answers</h3>
-                </div>
+              </Container>
             </div>
           :
             <Menu

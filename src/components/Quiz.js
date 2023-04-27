@@ -40,9 +40,12 @@ export default function Quiz(props){
 
   return (
     <div className="question-container">
-      <h3 className="question-title">{props.q.question}</h3>
-      {answerElements}
-      <div className="line"></div>
+      <div>
+        <h3 className="question-title mt-3 mb-3">{props.q.question}</h3>
+      </div>
+      <div className="m-2 d-flex justify-content-between">
+        {answerElements}
+      </div>
     </div>
   )
 }
