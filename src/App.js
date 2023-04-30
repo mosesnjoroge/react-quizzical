@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid';
-
+import { Container } from 'react-bootstrap';
 
 function App() {
 
@@ -32,32 +32,66 @@ function App() {
     }, [count]
   )
 
-  const questionElements = questions ? questions.map(question => {
-    return (
-      <Quiz
-        id = {question.id}
-        key = {question.id}
-        q = {question}
-      />
-    )
-  }):[]
-
-  function start() {
-    setStarted(x => !x)
-  }
 
   // stlyling for homepage
 
   const styles = {
     background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"}
 
-  // // loop for printing out questions
+    // Method to check answer status
+    function handleCheck() {
+      let selected = true
+      questions.forEach(question => {
+        if (question.selected === null){
+          selected = false
+          return
+        }
+      })
+      if (!selected){
+        return
+      }
+      setQuestions(questions => questions.map(question =>{
+        return {...question, checked:true}
+      }))
+      setChecked(true)
+      let correct = 0
+      questions.forEach(question => {
+        if (question.correct === question.selected){
+          correct += 1
+        }
+      })
+      setCorrect(correct)
+    }
 
+    // btn method associating answer with question
+    function handleClickAnswer (id, answer){
+      setQuestions(questions => questions.map(question =>{
+        return question.id === id ? {...question, selected:answer} :question
+      }))
+    }
 
-  // Method to submit form and create meme
-  const handleSubmit = event =>{
-    event.preventDefault();
-  };
+    // restart game
+    function handlePlayAgain() {
+      setCount(count => count +1)
+      setChecked(false)
+    }
+
+    // render quiz elements
+    const quizElements = questions ? questions.map(question => {
+      return (
+        <Quiz
+        id = {question.id}
+        key = {question.id}
+        q = {question}
+        handleClickAnswer ={handleClickAnswer}
+        />
+        )
+      }):[]
+
+      // function for start status
+      function start() {
+        setStarted(x => !x)
+      }
 
   return (
     <div
@@ -65,24 +99,22 @@ function App() {
       style = {styles}
     >
       <div className='content-container mt-3'>
-        { started ?
-          <div className='start-content-container'>
-            {questionElements}
-            <div className='end-div'>
-              <button onClick = {handleSubmit} className='check'>check answer</button>
+        { started?
+            <div className='start-content-container'>
+              <Container>
+                {quizElements}
+                <div className='end-div'>
+                  <button className='check mt-4' onClick={checked ? handlePlayAgain() : handleCheck()}>{checked ? 'Play Again' : 'Check Answer'}</button>
+                  <button className='m-2 danger'>Back</button>
+                  {checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
+                </div>
+              </Container>
             </div>
-          </div>
           :
-          <Menu
-            start={start}
-          />
+            <Menu
+              start={start}
+            />
         }
-      </div>
-      <div className='quiz--score'>
-        <span>
-
-
-        </span>
       </div>
     </div>
   );
