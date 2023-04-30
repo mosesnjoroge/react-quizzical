@@ -55,6 +55,7 @@ function App() {
       setQuestions(questions => questions.map(question =>{
         return {...question, checked:true}
       }))
+      setChecked(true)
     }
 
     // btn method associating answer with question
@@ -63,7 +64,6 @@ function App() {
       setQuestions(questions => questions.map(question =>{
         return question.id === id ? {...question, selected:answer} :question
       }))
-      setChecked(true)
     }
 
 
