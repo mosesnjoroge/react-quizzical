@@ -33,64 +33,65 @@ function App() {
   )
 
 
-  function start() {
-    setStarted(x => !x)
-  }
-
   // stlyling for homepage
 
   const styles = {
     background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"}
 
-  // Method to check answer status
-  function handleCheck() {
-    let selected = true
-    questions.forEach(question => {
-      if (question.selected === null){
-        selected = false
+    // Method to check answer status
+    function handleCheck() {
+      let selected = true
+      questions.forEach(question => {
+        if (question.selected === null){
+          selected = false
+          return
+        }
+      })
+      if (!selected){
         return
       }
-    })
-    if (!selected){
-      return
+      setQuestions(questions => questions.map(question =>{
+        return {...question, checked:true}
+      }))
+      setChecked(true)
+      let correct = 0
+      questions.forEach(question => {
+        if (question.correct === question.selected){
+          correct += 1
+        }
+      })
+      setCorrect(correct)
     }
-    setQuestions(questions => questions.map(question =>{
-      return {...question, checked:true}
-    }))
-    setChecked(true)
-    let correct = 0
-    questions.forEach(question => {
-      if (question.correct === question.selected){
-        correct += 1
-      }
-    })
-    setCorrect(correct)
-  }
 
-  // btn method associating answer with question
-  function handleClickAnswer (id, answer){
-    setQuestions(questions => questions.map(question =>{
-      return question.id === id ? {...question, selected:answer} :question
-    }))
-  }
+    // btn method associating answer with question
+    function handleClickAnswer (id, answer){
+      setQuestions(questions => questions.map(question =>{
+        return question.id === id ? {...question, selected:answer} :question
+      }))
+    }
 
-  // restart game
-  function handlePlayAgain() {
-    setCount(count => count +1)
-    setChecked(false)
-  }
+    // restart game
+    function handlePlayAgain() {
+      setCount(count => count +1)
+      setChecked(false)
+    }
 
-  // render quiz elements
-  const quizElements = questions ? questions.map(question => {
-    return (
-      <Quiz
+    // render quiz elements
+    const quizElements = questions ? questions.map(question => {
+      return (
+        <Quiz
         id = {question.id}
         key = {question.id}
-        handleClickAnswer ={handleClickAnswer}
         q = {question}
-      />
-    )
-  }):[]
+        handleClickAnswer ={handleClickAnswer}
+        />
+        )
+      }):[]
+
+      // function for start status
+      function start() {
+        setStarted(x => !x)
+      }
 
   return (
     <div
