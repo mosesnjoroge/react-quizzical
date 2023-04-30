@@ -54,7 +54,7 @@ function App() {
     if (!selected){
       return
     }
-    setQuestions(questons => questions.map(question =>{
+    setQuestions(questions => questions.map(question =>{
       return {...question, checked:true}
     }))
     setChecked(true)
