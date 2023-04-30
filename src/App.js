@@ -41,35 +41,29 @@ function App() {
     // Method to check answer status
     function handleCheck() {
       let selected = true
-      questions.forEach(question => {
-        if (question.selected === null){
-          selected = false
-          return
-        }
-      })
-      if (!selected){
-        return
-      }
-      setQuestions(questions => questions.map(question =>{
-        return {...question, checked:true}
-      }))
-      setChecked(true)
       let correct = 0
       questions.forEach(question => {
-        if (question.correct === question.selected){
+        if (question.selected === null && selected !== true){
+          selected = false
+          return
+        } else if (question.correct === question.selected){
+          setCorrect(correct)
           correct += 1
         }
       })
-      setCorrect(correct)
+
+      setQuestions(questions => questions.map(question =>{
+        return {...question, checked:true}
+      }))
     }
 
     // btn method associating answer with question
     function handleClickAnswer (id, answer){
-      if (answer !== undefined){
-        setQuestions(questions => questions.map(question =>{
-          return question.id === id ? {...question, selected:answer} :question
-        }))
-      }
+
+      setQuestions(questions => questions.map(question =>{
+        return question.id === id ? {...question, selected:answer} :question
+      }))
+      setChecked(true)
     }
 
     // restart game
@@ -85,6 +79,7 @@ function App() {
         id = {question.id}
         key = {question.id}
         q = {question}
+        // correctAnswer = {question.correct_answer}
         handleClickAnswer ={handleClickAnswer}
         />
         )

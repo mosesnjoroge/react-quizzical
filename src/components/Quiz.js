@@ -8,8 +8,8 @@ export default function Quiz(props){
 
   // answer validation
   function handleClick(answer) {
-    if (props.q.checked){
-      return
+    if (props.q.checked && props.q.answers !== undefined){
+      return alert('btn selected')
     }
     props.handleClickAnswer(props.id, answer)
   }
