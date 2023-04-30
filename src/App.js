@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid';
-import { Container } from 'react-bootstrap';
+// import { Container } from 'react-bootstrap';
 
 function App() {
 
@@ -40,11 +40,11 @@ function App() {
 
     // Method to check answer status
     function handleCheck() {
-      let selected = true
+      // let selected = true
       let correct = 0
       questions.forEach(question => {
-        if (question.selected === null && selected !== true){
-          selected = false
+        if (question.selected === null){
+          // selected = false
           return
         } else if (question.correct === question.selected){
           setCorrect(correct)
@@ -66,11 +66,6 @@ function App() {
       setChecked(true)
     }
 
-    // restart game
-    function handlePlayAgain() {
-      setCount(count => count + 1)
-      setChecked(false)
-    }
 
     // render quiz elements
     const quizElements = questions ? questions.map(question => {
@@ -79,7 +74,6 @@ function App() {
         id = {question.id}
         key = {question.id}
         q = {question}
-        // correctAnswer = {question.correct_answer}
         handleClickAnswer ={handleClickAnswer}
         />
         )
@@ -90,6 +84,12 @@ function App() {
         setStarted(x => !x)
       }
 
+      // restart game
+      function handlePlayAgain() {
+        setCount(count => count + 1)
+        setChecked(false)
+      }
+
   return (
     <div
       className="App"
@@ -98,14 +98,12 @@ function App() {
       <div className='content-container mt-3'>
         { started?
             <div className='start-content-container'>
-              <Container>
                 {quizElements}
                 <div className='end-div'>
-                  <button className='check mt-4' onClick={checked ? handlePlayAgain : handleCheck}>{checked ? 'Play Again' : 'Check Answer'}</button>
+                  <button className='check mt-4' onClick={!checked ? handleCheck: handlePlayAgain}>{checked ? 'Check Answer': 'Play Again'}</button>
                   <button className='m-2 danger'>Back</button>
-                  {checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
+                  {!checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
                 </div>
-              </Container>
             </div>
           :
             <Menu

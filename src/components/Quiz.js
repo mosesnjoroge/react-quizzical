@@ -34,6 +34,7 @@ export default function Quiz(props){
           id={id}
           className={answer === props.q.selected? "answer selected" : "answer"}
           onClick={() => handleClick(answer)}
+          defaultValue={answers[0]}
           >
             {answer}
         </button>
