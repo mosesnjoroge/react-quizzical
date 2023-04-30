@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid';
-import { Container } from 'react-bootstrap';
+// import { Container } from 'react-bootstrap';
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
 
   useEffect (() => {
       async function getQuestion(){
-        const res = await fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+        const res = await fetch("https://opentdb.com/api.php?amount=5&category=21&difficulty=easy&type=multiple")
         const data = await res.json()
         let q = []
         data.results.forEach(question => {
@@ -40,41 +40,32 @@ function App() {
 
     // Method to check answer status
     function handleCheck() {
-      let selected = true
+      // let selected = true
+      let correct = 0
       questions.forEach(question => {
         if (question.selected === null){
-          selected = false
+          // selected = false
           return
+        } else if (question.correct === question.selected){
+          setCorrect(correct)
+          correct += 1
         }
       })
-      if (!selected){
-        return
-      }
+
       setQuestions(questions => questions.map(question =>{
         return {...question, checked:true}
       }))
       setChecked(true)
-      let correct = 0
-      questions.forEach(question => {
-        if (question.correct === question.selected){
-          correct += 1
-        }
-      })
-      setCorrect(correct)
     }
 
     // btn method associating answer with question
     function handleClickAnswer (id, answer){
+
       setQuestions(questions => questions.map(question =>{
         return question.id === id ? {...question, selected:answer} :question
       }))
     }
 
-    // restart game
-    function handlePlayAgain() {
-      setCount(count => count +1)
-      setChecked(false)
-    }
 
     // render quiz elements
     const quizElements = questions ? questions.map(question => {
@@ -93,6 +84,12 @@ function App() {
         setStarted(x => !x)
       }
 
+      // restart game
+      function handlePlayAgain() {
+        setCount(count => count + 1)
+        setChecked(false)
+      }
+
   return (
     <div
       className="App"
@@ -101,14 +98,12 @@ function App() {
       <div className='content-container mt-3'>
         { started?
             <div className='start-content-container'>
-              <Container>
                 {quizElements}
                 <div className='end-div'>
-                  <button className='check mt-4' onClick={checked ? handlePlayAgain() : handleCheck()}>{checked ? 'Play Again' : 'Check Answer'}</button>
+                  <button className='check mt-4' onClick={checked ? handlePlayAgain: handleCheck}>{checked ? 'Play Again': 'Check answer'}</button>
                   <button className='m-2 danger'>Back</button>
                   {checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
                 </div>
-              </Container>
             </div>
           :
             <Menu
