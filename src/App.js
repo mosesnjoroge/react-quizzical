@@ -100,9 +100,9 @@ function App() {
             <div className='start-content-container'>
                 {quizElements}
                 <div className='end-div'>
-                  <button className='check mt-4' onClick={!checked ? handleCheck: handlePlayAgain}>{checked ? 'Check Answer': 'Play Again'}</button>
+                  <button className='check mt-4' onClick={checked ? handlePlayAgain: handleCheck}>{checked ? 'Play Again': 'Check answer'}</button>
                   <button className='m-2 danger'>Back</button>
-                  {!checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
+                  {checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
                 </div>
             </div>
           :
