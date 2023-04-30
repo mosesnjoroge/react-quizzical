@@ -20,7 +20,7 @@ function App() {
 
   useEffect (() => {
       async function getQuestion(){
-        const res = await fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+        const res = await fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple&encode=base64")
         const data = await res.json()
         let q = []
         data.results.forEach(question => {
@@ -72,7 +72,7 @@ function App() {
 
     // restart game
     function handlePlayAgain() {
-      setCount(count => count +1)
+      setCount(count => count + 1)
       setChecked(false)
     }
 
@@ -104,7 +104,7 @@ function App() {
               <Container>
                 {quizElements}
                 <div className='end-div'>
-                  <button className='check mt-4' onClick={checked ? handlePlayAgain() : handleCheck()}>{checked ? 'Play Again' : 'Check Answer'}</button>
+                  <button className='check mt-4' onClick={checked ? handlePlayAgain : handleCheck}>{checked ? 'Play Again' : 'Check Answer'}</button>
                   <button className='m-2 danger'>Back</button>
                   {checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
                 </div>
