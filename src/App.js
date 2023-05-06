@@ -24,7 +24,14 @@ function App() {
         const data = await res.json()
         let q = []
         data.results.forEach(question => {
-          q.push({id:nanoid(),question:question.question,correct: question.correct_answer,selected: null, checked:false,answers:shuffleArray([...question.incorrect_answers, question.correct_answers])})
+          q.push({
+            id:nanoid(),
+            question:question.question,
+            correct: question.correct_answer,
+            answers:shuffleArray([...question.incorrect_answers, question.correct_answer]),
+            checked:false,
+            selected: null
+          })
         })
         setQuestions(q)
       }
@@ -40,11 +47,11 @@ function App() {
 
     // Method to check answer status
     function handleCheck() {
-      // let selected = true
+
       let correct = 0
       questions.forEach(question => {
         if (question.selected === null){
-          // selected = false
+
           return
         } else if (question.correct === question.selected){
           setCorrect(correct)
@@ -97,7 +104,7 @@ function App() {
     >
       <div className='content-container mt-3'>
         { started?
-            <div className='start-content-container'>
+            <div className='container'>
                 {quizElements}
                 <div className='end-div'>
                   <button className='check mt-4' onClick={checked ? handlePlayAgain: handleCheck}>{checked ? 'Play Again': 'Check answer'}</button>
