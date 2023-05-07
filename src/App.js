@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid';
+import { Button, ButtonGroup } from 'react-bootstrap';
 // import { Container } from 'react-bootstrap';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const[correct,setCorrect] = useState(0)
   const[checked, setChecked] = useState(false)
   const[count, setCount] = useState(0)
+  const[active,setActive] = useState(false)
 
   // method to fetch questions from the API
   const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5)
@@ -24,7 +26,14 @@ function App() {
         const data = await res.json()
         let q = []
         data.results.forEach(question => {
-          q.push({id:nanoid(),question:question.question,correct: question.correct_answer,selected: null, checked:false,answers:shuffleArray([...question.incorrect_answers, question.correct_answers])})
+          q.push({
+            id:nanoid(),
+            question:question.question,
+            correct: question.correct_answer,
+            answers:shuffleArray([...question.incorrect_answers, question.correct_answer]),
+            checked:false,
+            selected: null
+          })
         })
         setQuestions(q)
       }
@@ -38,57 +47,59 @@ function App() {
   const styles = {
     background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"}
 
-    // Method to check answer status
-    function handleCheck() {
-      // let selected = true
-      let correct = 0
-      questions.forEach(question => {
-        if (question.selected === null){
-          // selected = false
-          return
-        } else if (question.correct === question.selected){
-          setCorrect(correct)
-          correct += 1
-        }
-      })
+  // Method to check answer status
+  function handleCheck() {
+    // let selected = true
+    let correct = 0
+    questions.forEach(question => {
+      if (question.selected === null){
+        return
+      } else if (question.correct === question.selected){
+        setCorrect(correct)
+        correct += 1
+      }
+    })
 
-      setQuestions(questions => questions.map(question =>{
-        return {...question, checked:true}
-      }))
-      setChecked(true)
-    }
+    setQuestions(questions => questions.map(question =>{
+      return {...question, checked:true}
+    }))
+    setChecked(true)
+    setActive(active)
+  }
 
-    // btn method associating answer with question
-    function handleClickAnswer (id, answer){
+  // btn method associating answer with question
+  function handleClickAnswer (id, answer){
+    // setActive(true)
+    setQuestions(questions => questions.map(question =>{
+      return question.id === id ? {...question, selected:answer} :question
+    }))
+  }
 
-      setQuestions(questions => questions.map(question =>{
-        return question.id === id ? {...question, selected:answer} :question
-      }))
-    }
+  // btn interactivity
 
 
-    // render quiz elements
-    const quizElements = questions ? questions.map(question => {
-      return (
-        <Quiz
+  // render quiz elements
+  const quizElements = questions ? questions.map(question => {
+    return (
+      <Quiz
         id = {question.id}
         key = {question.id}
         q = {question}
         handleClickAnswer ={handleClickAnswer}
-        />
-        )
-      }):[]
+      />
+      )
+    }):[]
 
-      // function for start status
-      function start() {
-        setStarted(x => !x)
-      }
+  // function for start status
+  function start() {
+    setStarted(x => !x)
+  }
 
-      // restart game
-      function handlePlayAgain() {
-        setCount(count => count + 1)
-        setChecked(false)
-      }
+  // restart game
+  function handlePlayAgain() {
+    setCount(count => count + 1)
+    setChecked(false)
+  }
 
   return (
     <div
@@ -97,11 +108,22 @@ function App() {
     >
       <div className='content-container mt-3'>
         { started?
-            <div className='start-content-container'>
+            <div className='container'>
                 {quizElements}
                 <div className='end-div'>
-                  <button className='check mt-4' onClick={checked ? handlePlayAgain: handleCheck}>{checked ? 'Play Again': 'Check answer'}</button>
-                  <button className='m-2 danger'>Back</button>
+                  <ButtonGroup>
+                    <Button
+                      className='check mt-4'
+                      variant='outline-dark'
+                      onClick={checked ? handlePlayAgain: handleCheck}>
+                        {checked ? 'Play Again': 'Check answer'}
+                    </Button>
+                    <Button
+                      className='mt-4 d-flex '
+                      variant='outline-danger'>
+                        Back
+                    </Button>
+                  </ButtonGroup>
                   {checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
                 </div>
             </div>

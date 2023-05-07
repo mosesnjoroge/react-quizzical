@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import React from "react";
-
+import { ButtonGroup } from "react-bootstrap";
+import  Button  from "react-bootstrap/Button";
 
 export default function Quiz(props){
 
@@ -9,7 +10,7 @@ export default function Quiz(props){
   // answer validation
   function handleClick(answer) {
     if (props.q.checked && props.q.answers !== undefined){
-      return alert('btn selected')
+      return
     }
     props.handleClickAnswer(props.id, answer)
   }
@@ -29,15 +30,19 @@ export default function Quiz(props){
       }
 
       return (
-        <button
-          key={nanoid()}
-          id={id}
-          className={answer === props.q.selected? "answer selected" : "answer"}
-          onClick={() => handleClick(answer)}
-          defaultValue={props.q.answers[0]}
-          >
-            {answer}
-        </button>
+        <ButtonGroup>
+          <Button
+            key={nanoid()}
+            id={id}
+            variant="outline-light"
+            className={answer === props.q.selected? "answer selected" : "answer"}
+            onClick={() => handleClick(answer)}
+            defaultValue={props.q.answers[0]}
+            // onChange={(e) => props.setChecked(e.currentTarget.props.checked)}
+            >
+              {answer}
+          </Button>
+        </ButtonGroup>
       )
     })
 
