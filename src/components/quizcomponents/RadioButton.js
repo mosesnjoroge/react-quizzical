@@ -12,8 +12,9 @@ export default function RadioButton(props) {
         id={props.id}
         autoComplete="off"
         label={props.answer}
-        onClick={props.handleAnswerChange}
-        defaultChecked/>
+        onChange={props.handleAnswerChange}
+        defaultChecked
+        />
     </div>
   )
 }

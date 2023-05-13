@@ -1,8 +1,7 @@
 import React,{useState} from "react";
 import { nanoid } from "nanoid";
 import RadioButton from "./quizcomponents/RadioButton";
-// import { ButtonGroup } from "react-bootstrap";
-// import  Button  from "react-bootstrap/Button";
+
 
 export default function Quiz(props){
 
