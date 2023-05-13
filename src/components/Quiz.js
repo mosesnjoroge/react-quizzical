@@ -6,29 +6,27 @@ import RadioButton from "./quizcomponents/RadioButton";
 
 export default function Quiz(props){
 
-  const [value, setValue] = useState(false)
+  const [value, setValue] = useState()
 
   let answers = props.q.answers
 
-  // handle value variable answer
-
-  function handleAnswerChange(){
-    setValue(!value)
-  }
 
 
   // handling answer selection
   function handleClick(answer) {
-    if (props.q.checked && props.q.answers !== undefined){
-      return
-    }
-    let value = props.handleClickAnswer(props.id, answer)
-    handleAnswerChange(value)
+    props.handleClickAnswer(props.id, answer)
   }
+  // handle value variable answer
+
+  function handleAnswerChange(){
+    const value = props.q.selected
+    setValue(!value)
+  }
+
   // rendering answer elements
     const answerElements = answers.map(answer => {
       let id = null;
-      if (props.q.checked){
+      if (props.q.checked && answer === value){
         if (props.q.correct === answer){
           id = 'correct'
         }
