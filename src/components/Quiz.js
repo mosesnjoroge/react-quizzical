@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import React from "react";
-import { ButtonGroup } from "react-bootstrap";
-import  Button  from "react-bootstrap/Button";
+// import { ButtonGroup } from "react-bootstrap";
+// import  Button  from "react-bootstrap/Button";
 
 export default function Quiz(props){
 
@@ -30,21 +30,25 @@ export default function Quiz(props){
       }
 
       return (
+        <div className="btn-group-horizontal" role="group" >
+          <label class="btn btn-outline-dark" for="vbtn-radio1">
+            <input
+              key={nanoid()}
+              id={id}
+              type="radio"
+              class="btn-check"
+              name="vbtn-radio"
+              onClick={() => handleClick()}
+              // onChange={(e) => props.setChecked(e.currentTarget.props.checked)}
+              >
+                {answer}
 
-          <div
-            key={nanoid()}
-            id={id}
-            variant="outline-light"
-            onClick={() => handleClick()}
-            // onChange={(e) => props.setChecked(e.currentTarget.props.checked)}
-            >
-            <div class="btn-group-vertical" role="group" aria-label="Horizontal radio toggle button group">
-              <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked/>
-              <label class="btn btn-outline-danger" for="vbtn-radio1">{answer}</label>
-            </div>
 
-              {/* {answer} */}
-          </div>
+
+            </input>
+          </label>
+        </div>
+
 
       )
     })
