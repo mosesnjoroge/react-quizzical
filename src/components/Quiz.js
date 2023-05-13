@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import React from "react";
+import RadioButton from "./RadioButton";
 // import { ButtonGroup } from "react-bootstrap";
 // import  Button  from "react-bootstrap/Button";
 
@@ -7,11 +8,12 @@ export default function Quiz(props){
 
   let answers = props.q.answers
 
-  // answer validation
-  function handleClick(answer) {
+  // handling answer selection
+  function handleAnswerChange(answer) {
     if (props.q.checked && props.q.answers !== undefined){
       return
     }
+    props.setChecked(true)
     props.handleClickAnswer(props.id, answer)
   }
   // rendering answer elements
@@ -31,25 +33,15 @@ export default function Quiz(props){
 
       return (
         <div className="btn-group-horizontal" role="group" >
-          <label class="btn btn-outline-dark" for="vbtn-radio1">
-            <input
+
+            <RadioButton
               key={nanoid()}
               id={id}
-              type="radio"
-              class="btn-check"
-              name="vbtn-radio"
-              onClick={() => handleClick()}
-              // onChange={(e) => props.setChecked(e.currentTarget.props.checked)}
+              onChange={handleAnswerChange}
               >
                 {answer}
-
-
-
-            </input>
-          </label>
+            </RadioButton>
         </div>
-
-
       )
     })
 

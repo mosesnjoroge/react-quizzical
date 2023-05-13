@@ -1,12 +1,13 @@
 import Quiz from './components/Quiz';
 import Menu from './components/Menu';
+// import RadioButton from './components/RadioButton';
 import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@coreui/coreui/dist/css/coreui.min.css'
 import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
-// import { Container } from 'react-bootstrap';
+
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
   const[correct,setCorrect] = useState(0)
   const[checked, setChecked] = useState(false)
   const[count, setCount] = useState(0)
-  // const[active,setActive] = useState(false)
+
 
   // method to fetch questions from the API
   const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5)
@@ -44,7 +45,10 @@ function App() {
 
   // stlyling for homepage
   const styles = {
-    background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"}
+    background: started ? 'grey': 'white'
+
+    // background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"
+  }
 
   // Method to check answer status
   function handleCheck() {
