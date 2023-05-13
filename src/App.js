@@ -1,6 +1,5 @@
 import Quiz from './components/Quiz';
 import Menu from './components/Menu';
-// import RadioButton from './components/RadioButton';
 import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -34,7 +33,7 @@ function App() {
             correct: question.correct_answer,
             answers:shuffleArray([...question.incorrect_answers, question.correct_answer]),
             checked:false,
-            selected: false
+            selected: null
           })
         })
         setQuestions(q)
