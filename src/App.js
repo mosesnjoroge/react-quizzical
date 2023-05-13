@@ -45,7 +45,7 @@ function App() {
 
   // stlyling for homepage
   const styles = {
-    background: started ? 'grey': 'white'
+    background: started ? 'white': 'white'
 
     // background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"
   }

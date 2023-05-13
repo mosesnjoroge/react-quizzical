@@ -1,11 +1,12 @@
 import { nanoid } from "nanoid";
-import React from "react";
+import React, { useState } from "react";
 import RadioButton from "./RadioButton";
 // import { ButtonGroup } from "react-bootstrap";
 // import  Button  from "react-bootstrap/Button";
 
 export default function Quiz(props){
 
+  const[selected,setSelected] = useState('')
   let answers = props.q.answers
 
   // handling answer selection
@@ -13,7 +14,7 @@ export default function Quiz(props){
     if (props.q.checked && props.q.answers !== undefined){
       return
     }
-    props.setChecked(true)
+    setSelected(props.q.answer)
     props.handleClickAnswer(props.id, answer)
   }
   // rendering answer elements
@@ -37,10 +38,10 @@ export default function Quiz(props){
             <RadioButton
               key={nanoid()}
               id={id}
+              value = {selected === answer}
               onChange={handleAnswerChange}
-              >
-                {answer}
-            </RadioButton>
+              />
+
         </div>
       )
     })
