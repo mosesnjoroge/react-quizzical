@@ -34,7 +34,7 @@ function App() {
             correct: question.correct_answer,
             answers:shuffleArray([...question.incorrect_answers, question.correct_answer]),
             checked:false,
-            selected: null
+            selected: false
           })
         })
         setQuestions(q)
@@ -71,14 +71,10 @@ function App() {
 
   // btn method associating answer with question
   function handleClickAnswer (id, answer){
-    // setActive(true)
     setQuestions(questions => questions.map(question =>{
       return question.id === id ? {...question, selected:answer} :question
     }))
   }
-
-  // btn interactivity
-
 
   // render quiz elements
   const quizElements = questions ? questions.map(question => {

@@ -14,7 +14,7 @@ export default function Quiz(props){
     if (props.q.checked && props.q.answers !== undefined){
       return
     }
-    setSelected(props.q.answer)
+    setSelected()
     props.handleClickAnswer(props.id, answer)
   }
   // rendering answer elements
@@ -37,10 +37,9 @@ export default function Quiz(props){
 
             <RadioButton
               key={nanoid()}
-              id={id}
-              value = {selected === answer}
+              value = {answer}
               onChange={handleAnswerChange}
-              />
+            />
 
         </div>
       )
