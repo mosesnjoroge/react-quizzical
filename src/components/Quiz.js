@@ -30,19 +30,22 @@ export default function Quiz(props){
       }
 
       return (
-        <ButtonGroup>
-          <Button
+
+          <div
             key={nanoid()}
             id={id}
             variant="outline-light"
-            className={answer === props.q.selected? "answer selected" : "answer"}
-            onClick={() => handleClick(answer)}
-            defaultValue={props.q.answers[0]}
+            onClick={() => handleClick()}
             // onChange={(e) => props.setChecked(e.currentTarget.props.checked)}
             >
-              {answer}
-          </Button>
-        </ButtonGroup>
+            <div class="btn-group-vertical" role="group" aria-label="Horizontal radio toggle button group">
+              <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked/>
+              <label class="btn btn-outline-danger" for="vbtn-radio1">{answer}</label>
+            </div>
+
+              {/* {answer} */}
+          </div>
+
       )
     })
 

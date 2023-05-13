@@ -3,6 +3,7 @@ import Menu from './components/Menu';
 import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@coreui/coreui/dist/css/coreui.min.css'
 import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
 // import { Container } from 'react-bootstrap';
@@ -15,7 +16,7 @@ function App() {
   const[correct,setCorrect] = useState(0)
   const[checked, setChecked] = useState(false)
   const[count, setCount] = useState(0)
-  const[active,setActive] = useState(false)
+  // const[active,setActive] = useState(false)
 
   // method to fetch questions from the API
   const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5)
@@ -64,7 +65,6 @@ function App() {
       return {...question, checked:true}
     }))
     setChecked(true)
-    setActive(active)
   }
 
   // btn method associating answer with question
