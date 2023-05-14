@@ -10,8 +10,6 @@ export default function Quiz(props){
 
   let answers = props.q.answers
 
-
-
   // handling answer selection
   function handleClick(answer) {
     props.handleClickAnswer(props.id, answer)
@@ -19,6 +17,7 @@ export default function Quiz(props){
   // handle value variable answer
 
   function handleAnswerChange(){
+
     const value = props.q.selected
     setValue(!value)
   }
