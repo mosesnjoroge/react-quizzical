@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import { nanoid } from "nanoid";
-import RadioButton from "./quizcomponents/RadioButton";
+// import RadioButton from "./quizcomponents/RadioButton";
 
 
 export default function Quiz(props){
@@ -40,12 +40,21 @@ export default function Quiz(props){
       return (
         <div className="btn-group-horizontal" role="group" >
 
-            <RadioButton
+            <label
+
+              type="radio"
+              name= {answer}
+              id={id}
+              autoComplete="off"
+              label={answer}
+              onChange={handleAnswerChange}
+              defaultChecked
+
               key={nanoid()}
-              id= {id}
+              // id= {id}
               value = {answer}
               handleClick = {() => handleClick()}
-              onChange={handleAnswerChange}
+              // onChange={handleAnswerChange}
             />
         </div>
       )

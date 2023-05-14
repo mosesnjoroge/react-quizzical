@@ -1,17 +1,17 @@
 import { React } from "react";
-import { CFormCheck } from '@coreui/react'
+// import { CForm } from '@coreui/react'
 
 export default function RadioButton(props) {
 
   return (
     <div>
-      <CFormCheck
+      <label
         button={{ color: 'success', variant: 'outline' }}
         type="radio"
-        name= {props.answer}
-        id={props.id}
+        name= {props.answerElements}
+        // id={props.id}
         autoComplete="off"
-        label={props.answer}
+        label={props.answerElements}
         onChange={props.handleAnswerChange}
         defaultChecked
         />
