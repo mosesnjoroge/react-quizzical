@@ -57,9 +57,15 @@ export default function Quiz(props){
         {props.q.question}
       </label>
 
-      <CFormLabel button={{ color: 'success', variant: 'outline' }} type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" defaultChecked>
-        {answerElements}
-      </CFormLabel>
+      <CFormLabel
+      button={{ color: 'success', variant: 'outline' }}
+      type="radio" name={value}
+      id={props.id}
+      autoComplete="off"
+      label={answerElements}
+      defaultChecked
+      />
+
     </div>
   )
 }
