@@ -58,7 +58,6 @@ export default function Quiz(props){
       </label>
 
       <CFormLabel
-
         type="radio"
         name={value}
         id={props.id}
