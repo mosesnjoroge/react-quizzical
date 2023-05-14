@@ -38,20 +38,11 @@ export default function Quiz(props){
       }
 
       return (
-        <div className="btn-group-horizontal" role="group" >
+        <div >
 
-            <label
-
-              type="radio"
-              name= {answer}
-              id={id}
-              autoComplete="off"
-              label={answer}
-              onChange={handleAnswerChange}
-              defaultChecked
-
+            <button
               key={nanoid()}
-              // id= {id}
+              id= {id}
               value = {answer}
               handleClick = {() => handleClick()}
               // onChange={handleAnswerChange}
@@ -66,7 +57,12 @@ export default function Quiz(props){
         <h3 className="question-title mt-3 mb-3">{props.q.question}</h3>
       </div>
       <div className="m-2 d-flex justify-content-between">
-        {answerElements}
+      <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
+        <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1"  />
+        <label class="btn btn-outline-danger" for="vbtn-radio1" onChange={handleAnswerChange}>{answerElements}</label>
+      </div>
+
+        {/* {answerElements} */}
       </div>
     </div>
   )
