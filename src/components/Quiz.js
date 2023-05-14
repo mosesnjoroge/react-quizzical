@@ -40,13 +40,13 @@ export default function Quiz(props){
 
       return (
         <div >
-          <button
+
             key={nanoid()}
             id= {id}
             value = {answer}
             handleClick = {() => handleClick()}
             onChange={handleAnswerChange}
-          />
+
         </div>
       )
     })
@@ -58,12 +58,12 @@ export default function Quiz(props){
       </label>
 
       <CFormLabel
-      button={{ color: 'success', variant: 'outline' }}
-      type="radio" name={value}
-      id={props.id}
-      autoComplete="off"
-      label={answerElements}
-      defaultChecked
+
+        type="radio"
+        name={value}
+        id={props.id}
+        autoComplete="off"
+        label={answerElements}
       />
 
     </div>
