@@ -53,14 +53,14 @@ export default function Quiz(props){
 
   return (
     <div className="question-container">
-      <div>
-        <h3 className="question-title mt-3 mb-3">{props.q.question}</h3>
-      </div>
+      <label className="outline-danger">
+        {props.q.question}
+      </label>
       <div className="m-2 d-flex justify-content-between">
-      <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
-        <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1"  />
-        <label class="btn btn-outline-danger" for="vbtn-radio1" onChange={handleAnswerChange}>{answerElements}</label>
-      </div>
+        <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
+          <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1"  />
+          <label class="btn btn-outline-danger" for="vbtn-radio1" onChange={handleAnswerChange}>{answerElements}</label>
+        </div>
 
         {/* {answerElements} */}
       </div>
