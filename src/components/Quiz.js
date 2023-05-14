@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import { nanoid } from "nanoid";
 // import RadioButton from "./quizcomponents/RadioButton";
+import { CFormLabel } from '@coreui/react'
 
 
 export default function Quiz(props){
@@ -39,14 +40,13 @@ export default function Quiz(props){
 
       return (
         <div >
-
-            <button
-              key={nanoid()}
-              id= {id}
-              value = {answer}
-              handleClick = {() => handleClick()}
-              // onChange={handleAnswerChange}
-            />
+          <button
+            key={nanoid()}
+            id= {id}
+            value = {answer}
+            handleClick = {() => handleClick()}
+            onChange={handleAnswerChange}
+          />
         </div>
       )
     })
@@ -56,14 +56,10 @@ export default function Quiz(props){
       <label className="outline-danger">
         {props.q.question}
       </label>
-      <div className="m-2 d-flex justify-content-between">
-        <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
-          <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1"  />
-          <label class="btn btn-outline-danger" for="vbtn-radio1" onChange={handleAnswerChange}>{answerElements}</label>
-        </div>
 
-        {/* {answerElements} */}
-      </div>
+      <CFormLabel button={{ color: 'success', variant: 'outline' }} type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" defaultChecked>
+        {answerElements}
+      </CFormLabel>
     </div>
   )
 }
