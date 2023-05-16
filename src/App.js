@@ -3,9 +3,10 @@ import Menu from './components/Menu';
 import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@coreui/coreui/dist/css/coreui.min.css'
 import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
-// import { Container } from 'react-bootstrap';
+
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
   const[correct,setCorrect] = useState(0)
   const[checked, setChecked] = useState(false)
   const[count, setCount] = useState(0)
-  const[active,setActive] = useState(false)
+
 
   // method to fetch questions from the API
   const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5)
@@ -32,7 +33,8 @@ function App() {
             correct: question.correct_answer,
             answers:shuffleArray([...question.incorrect_answers, question.correct_answer]),
             checked:false,
-            selected: null
+            selected: null,
+            value:''
           })
         })
         setQuestions(q)
@@ -41,11 +43,12 @@ function App() {
     }, [count]
   )
 
-
   // stlyling for homepage
-
   const styles = {
-    background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"}
+    background: started ? 'white': 'white'
+
+    // background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"
+  }
 
   // Method to check answer status
   function handleCheck() {
@@ -64,19 +67,14 @@ function App() {
       return {...question, checked:true}
     }))
     setChecked(true)
-    setActive(active)
   }
 
   // btn method associating answer with question
   function handleClickAnswer (id, answer){
-    // setActive(true)
     setQuestions(questions => questions.map(question =>{
-      return question.id === id ? {...question, selected:answer} :question
+      return (question.id) === id ? {...question, selected:answer} :question
     }))
   }
-
-  // btn interactivity
-
 
   // render quiz elements
   const quizElements = questions ? questions.map(question => {
@@ -86,6 +84,7 @@ function App() {
         key = {question.id}
         q = {question}
         handleClickAnswer ={handleClickAnswer}
+        // onChange = {handleAnswerChange}
       />
       )
     }):[]

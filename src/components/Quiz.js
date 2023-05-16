@@ -1,23 +1,31 @@
+import React,{useState} from "react";
 import { nanoid } from "nanoid";
-import React from "react";
-import { ButtonGroup } from "react-bootstrap";
-import  Button  from "react-bootstrap/Button";
+// import RadioButton from "./quizcomponents/RadioButton";
+import { CFormLabel } from '@coreui/react'
+
 
 export default function Quiz(props){
 
+  const [value, setValue] = useState()
+
   let answers = props.q.answers
 
-  // answer validation
+  // handling answer selection
   function handleClick(answer) {
-    if (props.q.checked && props.q.answers !== undefined){
-      return
-    }
     props.handleClickAnswer(props.id, answer)
   }
+  // handle value variable answer
+
+  function handleAnswerChange(){
+
+    const value = props.q.selected
+    setValue(!value)
+  }
+
   // rendering answer elements
     const answerElements = answers.map(answer => {
       let id = null;
-      if (props.q.checked){
+      if (props.q.checked && answer === value){
         if (props.q.correct === answer){
           id = 'correct'
         }
@@ -30,30 +38,34 @@ export default function Quiz(props){
       }
 
       return (
-        <ButtonGroup>
-          <Button
+        <div >
+          <button>
             key={nanoid()}
-            id={id}
-            variant="outline-light"
-            className={answer === props.q.selected? "answer selected" : "answer"}
-            onClick={() => handleClick(answer)}
-            defaultValue={props.q.answers[0]}
-            // onChange={(e) => props.setChecked(e.currentTarget.props.checked)}
-            >
-              {answer}
-          </Button>
-        </ButtonGroup>
+            id= {id}
+            value = {answer}
+            handleClick = {() => handleClick()}
+            onChange={handleAnswerChange}
+
+          </button>
+
+        </div>
       )
     })
 
   return (
     <div className="question-container">
-      <div>
-        <h3 className="question-title mt-3 mb-3">{props.q.question}</h3>
-      </div>
-      <div className="m-2 d-flex justify-content-between">
-        {answerElements}
-      </div>
+      <label className="outline-danger">
+        {props.q.question}
+      </label>
+
+      <CFormLabel
+        type="radio"
+        name={value}
+        id={props.id}
+        autoComplete="off"
+        label={answerElements}
+      />
+
     </div>
   )
 }
