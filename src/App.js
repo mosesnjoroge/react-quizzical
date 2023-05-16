@@ -72,7 +72,7 @@ function App() {
   // btn method associating answer with question
   function handleClickAnswer (id, answer){
     setQuestions(questions => questions.map(question =>{
-      return question.id === id ? {...question, selected:answer} :question
+      return (question.id) === id ? {...question, selected:answer} :question
     }))
   }
 
@@ -84,6 +84,7 @@ function App() {
         key = {question.id}
         q = {question}
         handleClickAnswer ={handleClickAnswer}
+        // onChange = {handleAnswerChange}
       />
       )
     }):[]

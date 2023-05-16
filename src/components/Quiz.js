@@ -39,12 +39,14 @@ export default function Quiz(props){
 
       return (
         <div >
-
+          <button>
             key={nanoid()}
             id= {id}
             value = {answer}
             handleClick = {() => handleClick()}
             onChange={handleAnswerChange}
+
+          </button>
 
         </div>
       )
