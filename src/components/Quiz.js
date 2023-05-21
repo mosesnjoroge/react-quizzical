@@ -1,12 +1,11 @@
 import React from "react";
 import { nanoid } from "nanoid";
+import { Button, ButtonGroup } from "react-bootstrap";
 // import RadioButton from "./quizcomponents/RadioButton";
 // import { CFormLabel } from '@coreui/react'
 
 
 export default function Quiz(props){
-
-  // const [value, setValue] = useState('')
 
   let answers = props.q.answers
 
@@ -17,12 +16,6 @@ export default function Quiz(props){
     }
     props.handleClickAnswer(props.id, answer)
   }
-  // handle value variable answer
-
-  // function handleAnswerChange(){
-  //   const value = props.q.selected
-  //   // setValue(!value)
-  // }
 
   // rendering answer elements
     const answersElements = answers.map(answer => {
@@ -40,23 +33,24 @@ export default function Quiz(props){
       }
 
       return (
-        <div >
-          <button
+        <ButtonGroup >
+          <Button
+            className="btn btn-outline-primary active"
+            data-bs-toggle="button"
             key={nanoid()}
             id= {id}
-            /* value = {answer} */
-            onClick = {() => handleClick(answer)}>{answer}
-            {/* onChange={handleAnswerChange} */}
-          </button>
-        </div>
+            onClick = {() => handleClick(answer)}>
+              {answer}
+          </Button>
+        </ButtonGroup>
       )
     })
 
   return (
     <div className="question-container">
-      <label className="outline-danger">
+      <div className="outline-danger">
         {props.q.question}
-      </label>
+      </div>
         {answersElements}
     </div>
   )

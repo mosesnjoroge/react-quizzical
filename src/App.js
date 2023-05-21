@@ -33,8 +33,7 @@ function App() {
             correct: question.correct_answer,
             answers:shuffleArray([...question.incorrect_answers, question.correct_answer]),
             checked:false,
-            selected: null,
-            value:''
+            selected: null
           })
         })
         setQuestions(q)
