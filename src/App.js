@@ -33,8 +33,7 @@ function App() {
             correct: question.correct_answer,
             answers:shuffleArray([...question.incorrect_answers, question.correct_answer]),
             checked:false,
-            selected: null,
-            value:''
+            selected: null
           })
         })
         setQuestions(q)
@@ -52,21 +51,32 @@ function App() {
 
   // Method to check answer status
   function handleCheck() {
-    // let selected = true
+    let selected = true
     let correct = 0
     questions.forEach(question => {
       if (question.selected === null){
+        selected = false
         return
-      } else if (question.correct === question.selected){
-        setCorrect(correct)
-        correct += 1
       }
+      // else if (question.correct === question.selected){
+      //   setCorrect(correct)
+      //   correct += 1
+      // }
     })
-
+    if (!selected){
+      return
+    }
     setQuestions(questions => questions.map(question =>{
       return {...question, checked:true}
     }))
     setChecked(true)
+    questions.forEach(question => {
+      if (question.correct === question.selected){
+        correct += 1
+        }
+      }
+    )
+    setCorrect(correct)
   }
 
   // btn method associating answer with question
@@ -123,7 +133,7 @@ function App() {
                         Back
                     </Button>
                   </ButtonGroup>
-                  {checked && <span className = 'score'>You scored {correct}/5 correct answers</span>}
+                  {checked && <span className = 'score'>Your score is {correct}/5 correct answers</span>}
                 </div>
             </div>
           :
