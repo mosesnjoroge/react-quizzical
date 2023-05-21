@@ -52,10 +52,11 @@ function App() {
 
   // Method to check answer status
   function handleCheck() {
-    // let selected = true
+    let selected = true
     let correct = 0
     questions.forEach(question => {
       if (question.selected === null){
+        selected = false
         return
       } else if (question.correct === question.selected){
         setCorrect(correct)
