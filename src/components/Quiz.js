@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import { nanoid } from "nanoid";
 // import RadioButton from "./quizcomponents/RadioButton";
 // import { CFormLabel } from '@coreui/react'
@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 
 export default function Quiz(props){
 
-  const [value, setValue] = useState('')
+  // const [value, setValue] = useState('')
 
   let answers = props.q.answers
 
@@ -19,19 +19,19 @@ export default function Quiz(props){
   }
   // handle value variable answer
 
-  function handleAnswerChange(){
-    const value = props.q.selected
-    setValue(!value)
-  }
+  // function handleAnswerChange(){
+  //   const value = props.q.selected
+  //   // setValue(!value)
+  // }
 
   // rendering answer elements
     const answersElements = answers.map(answer => {
       let id = null;
       if (props.q.checked){
-        if (props.q.correct === value){
+        if (props.q.correct ===answer){
           id = 'correct'
         }
-        else if (props.q.selected === value){
+        else if (props.q.selected ===answer){
           id = 'incorrect'
         }
         else {
@@ -41,12 +41,12 @@ export default function Quiz(props){
 
       return (
         <div >
-          <button>
+          <button
             key={nanoid()}
             id= {id}
-            value = {answer}
-            handleClick = {() => handleClick()}
-            onChange={handleAnswerChange}
+            /* value = {answer} */
+            onClick = {() => handleClick(answer)}>{answer}
+            {/* onChange={handleAnswerChange} */}
           </button>
         </div>
       )
@@ -56,17 +56,8 @@ export default function Quiz(props){
     <div className="question-container">
       <label className="outline-danger">
         {props.q.question}
-        {answersElements}
       </label>
-
-      {/* <CFormLabel
-        type="radio"
-        name={value}
-        id={props.id}
-        autoComplete="off"
-        label={answerElements}
-      /> */}
-
+        {answersElements}
     </div>
   )
 }
