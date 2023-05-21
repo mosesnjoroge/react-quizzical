@@ -53,7 +53,7 @@ export default function Quiz(props){
       <div className="outline-danger">
         {props.q.question}
       </div>
-      <div className="pr-2 m-2">
+      <div className="d-flex justify-content-around m-2">
         {answersElements}
       </div>
     </div>
