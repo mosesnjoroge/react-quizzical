@@ -6,18 +6,20 @@ import { CFormLabel } from '@coreui/react'
 
 export default function Quiz(props){
 
-  const [value, setValue] = useState()
+  const [value, setValue] = useState('')
 
   let answers = props.q.answers
 
   // handling answer selection
   function handleClick(answer) {
+    if (props.q.checked){
+      return
+    }
     props.handleClickAnswer(props.id, answer)
   }
   // handle value variable answer
 
   function handleAnswerChange(){
-
     const value = props.q.selected
     setValue(!value)
   }
@@ -25,11 +27,11 @@ export default function Quiz(props){
   // rendering answer elements
     const answerElements = answers.map(answer => {
       let id = null;
-      if (props.q.checked && answer === value){
-        if (props.q.correct === answer){
+      if (props.q.checked){
+        if (props.q.correct === value){
           id = 'correct'
         }
-        else if (props.q.selected === answer){
+        else if (props.q.selected === value){
           id = 'incorrect'
         }
         else {
@@ -45,9 +47,7 @@ export default function Quiz(props){
             value = {answer}
             handleClick = {() => handleClick()}
             onChange={handleAnswerChange}
-
           </button>
-
         </div>
       )
     })
