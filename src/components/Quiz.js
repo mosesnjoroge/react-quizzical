@@ -1,8 +1,10 @@
 import React from "react";
 import { nanoid } from "nanoid";
-import { Button, ButtonGroup } from "react-bootstrap";
+// import { ButtonGroup } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+
 // import RadioButton from "./quizcomponents/RadioButton";
-// import { CFormLabel } from '@coreui/react'
+
 
 
 export default function Quiz(props){
@@ -15,6 +17,7 @@ export default function Quiz(props){
       return
     }
     props.handleClickAnswer(props.id, answer)
+
   }
 
   // rendering answer elements
@@ -33,16 +36,15 @@ export default function Quiz(props){
       }
 
       return (
-        <ButtonGroup >
           <Button
-            className="btn btn-outline-primary active"
-            data-bs-toggle="button"
             key={nanoid()}
             id= {id}
+            variant="outline-primary"
             onClick = {() => handleClick(answer)}>
               {answer}
           </Button>
-        </ButtonGroup>
+        // <ButtonGroup>
+        // </ButtonGroup>
       )
     })
 
@@ -51,7 +53,9 @@ export default function Quiz(props){
       <div className="outline-danger">
         {props.q.question}
       </div>
+      <div className="pr-2 m-2">
         {answersElements}
+      </div>
     </div>
   )
 }
