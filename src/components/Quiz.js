@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import { nanoid } from "nanoid";
 // import RadioButton from "./quizcomponents/RadioButton";
-import { CFormLabel } from '@coreui/react'
+// import { CFormLabel } from '@coreui/react'
 
 
 export default function Quiz(props){
@@ -25,7 +25,7 @@ export default function Quiz(props){
   }
 
   // rendering answer elements
-    const answerElements = answers.map(answer => {
+    const answersElements = answers.map(answer => {
       let id = null;
       if (props.q.checked){
         if (props.q.correct === value){
@@ -56,15 +56,16 @@ export default function Quiz(props){
     <div className="question-container">
       <label className="outline-danger">
         {props.q.question}
+        {answersElements}
       </label>
 
-      <CFormLabel
+      {/* <CFormLabel
         type="radio"
         name={value}
         id={props.id}
         autoComplete="off"
         label={answerElements}
-      />
+      /> */}
 
     </div>
   )
