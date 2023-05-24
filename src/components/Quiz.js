@@ -11,7 +11,6 @@ export default function Quiz(props){
       return false
     }
     props.handleClickAnswer(props.id, answer)
-
   }
 
   // rendering answer elements
