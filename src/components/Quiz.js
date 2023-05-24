@@ -17,10 +17,10 @@ export default function Quiz(props){
     const answersElements = answers.map(answer => {
       let id = null;
       if (props.q.checked){
-        if (props.q.correct ===answer){
+        if (props.q.correct === answer){
           id = 'correct'
         }
-        else if (props.q.selected ===answer){
+        else if (props.q.selected === answer){
           id = 'incorrect'
         }
         else {

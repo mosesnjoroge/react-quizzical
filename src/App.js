@@ -112,7 +112,7 @@ function App() {
   return (
     // <i className="fa-solid fa-face-thinking fa-bounce" style={{color: '#594dda',}}/>
 
-    /* <FontAwesomeIcon icon='fa-solid fa-face-thinking' bounce size="lg" style={{color: "#594dda",}}> */
+    /* <FontAwesomeIcon icon='fa-solid fa-face-thinking' bounce size="lg" style={{color: "#594dda",}}/> */
       <div
         className="App"
         style = {styles}
@@ -147,7 +147,6 @@ function App() {
           }
         </div>
       </div>
-      /* </FontAwesomeIcon>  */
 
   );
 }
