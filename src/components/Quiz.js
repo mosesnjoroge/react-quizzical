@@ -1,20 +1,14 @@
 import React from "react";
 import { nanoid } from "nanoid";
-// import { ButtonGroup } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-
-// import RadioButton from "./quizcomponents/RadioButton";
-
-
+import Button from "react-bootstrap/Button";
 
 export default function Quiz(props){
 
-  let answers = props.q.answers
-
   // handling answer selection
+  let answers = props.q.answers
   function handleClick(answer) {
     if (props.q.checked){
-      return
+      return false
     }
     props.handleClickAnswer(props.id, answer)
 
@@ -43,8 +37,6 @@ export default function Quiz(props){
             onClick = {() => handleClick(answer)}>
               {answer}
           </Button>
-        // <ButtonGroup>
-        // </ButtonGroup>
       )
     })
 
@@ -53,7 +45,7 @@ export default function Quiz(props){
       <div className="outline-danger">
         {props.q.question}
       </div>
-      <div className="d-flex justify-content-start  gap-3 pr-3 m-2">
+      <div className="d-flex justify-content-start gap-3 pr-3 m-2">
         {answersElements}
       </div>
     </div>

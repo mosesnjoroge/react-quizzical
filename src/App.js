@@ -45,8 +45,7 @@ function App() {
   // stlyling for homepage
   const styles = {
     background: started ? 'white': 'white'
-
-    // background: started ? 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)': "white"
+    // 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)'
   }
 
   // Method to check answer status
@@ -56,15 +55,11 @@ function App() {
     questions.forEach(question => {
       if (question.selected === null){
         selected = false
-        return
+        return false
       }
-      // else if (question.correct === question.selected){
-      //   setCorrect(correct)
-      //   correct += 1
-      // }
     })
     if (!selected){
-      return
+      return alert('you have answered all the questions, please answer all of them then try again')
     }
     setQuestions(questions => questions.map(question =>{
       return {...question, checked:true}
@@ -94,7 +89,6 @@ function App() {
         key = {question.id}
         q = {question}
         handleClickAnswer ={handleClickAnswer}
-        // onChange = {handleAnswerChange}
       />
       )
     }):[]
@@ -110,6 +104,10 @@ function App() {
     setChecked(false)
   }
 
+  // back button
+  function handleBackBtn() {
+    setStarted(false)
+  }
   return (
     <div
       className="App"
@@ -123,13 +121,15 @@ function App() {
                   <ButtonGroup>
                     <Button
                       className='check mt-4'
-                      variant='outline-dark'
+                      variant='outline-primary'
                       onClick={checked ? handlePlayAgain: handleCheck}>
                         {checked ? 'Play Again': 'Check answer'}
                     </Button>
                     <Button
                       className='mt-4 d-flex '
-                      variant='outline-danger'>
+                      variant='outline-danger'
+                      onClick = {() => handleBackBtn()}
+                      >
                         Back
                     </Button>
                   </ButtonGroup>
