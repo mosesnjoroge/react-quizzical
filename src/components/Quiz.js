@@ -8,7 +8,7 @@ export default function Quiz(props){
   let answers = props.q.answers
   function handleClick(answer) {
     if (props.q.checked){
-      return
+      return false
     }
     props.handleClickAnswer(props.id, answer)
 

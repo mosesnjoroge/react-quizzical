@@ -59,7 +59,7 @@ function App() {
       }
     })
     if (!selected){
-      return
+      return alert('you have answered all the questions, please answer all of them then try again')
     }
     setQuestions(questions => questions.map(question =>{
       return {...question, checked:true}
