@@ -121,7 +121,7 @@ function App() {
                   <ButtonGroup>
                     <Button
                       className='check mt-4'
-                      variant='outline-dark'
+                      variant='outline-primary'
                       onClick={checked ? handlePlayAgain: handleCheck}>
                         {checked ? 'Play Again': 'Check answer'}
                     </Button>
