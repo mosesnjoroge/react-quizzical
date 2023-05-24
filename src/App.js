@@ -104,6 +104,10 @@ function App() {
     setChecked(false)
   }
 
+  // back button
+  function handleBackBtn() {
+    setStarted(false)
+  }
   return (
     <div
       className="App"
@@ -124,7 +128,8 @@ function App() {
                     <Button
                       className='mt-4 d-flex '
                       variant='outline-danger'
-                      onClick = {!start}>
+                      onClick = {() => handleBackBtn()}
+                      >
                         Back
                     </Button>
                   </ButtonGroup>
