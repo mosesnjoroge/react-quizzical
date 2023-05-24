@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@coreui/coreui/dist/css/coreui.min.css'
 import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 function App() {
@@ -109,40 +110,44 @@ function App() {
     setStarted(false)
   }
   return (
-    <div
-      className="App"
-      style = {styles}
-    >
-      <div className='content-container mt-3'>
-        { started?
-            <div className='container'>
-                {quizElements}
-                <div className='end-div'>
-                  <ButtonGroup>
-                    <Button
-                      className='check mt-4'
-                      variant='outline-primary'
-                      onClick={checked ? handlePlayAgain: handleCheck}>
-                        {checked ? 'Play Again': 'Check answer'}
-                    </Button>
-                    <Button
-                      className='mt-4 d-flex '
-                      variant='outline-danger'
-                      onClick = {() => handleBackBtn()}
-                      >
-                        Back
-                    </Button>
-                  </ButtonGroup>
-                  {checked && <span className = 'score'>Your score is {correct}/5 correct answers</span>}
-                </div>
-            </div>
-          :
+    // <i className="fa-solid fa-face-thinking fa-bounce" style={{color: '#594dda',}}/>
+
+    /* <FontAwesomeIcon icon='fa-solid fa-face-thinking' bounce size="lg" style={{color: "#594dda",}}/> */
+      <div
+        className="App"
+        style = {styles}
+        >
+        <div className='content-container mt-3'>
+          { started?
+              <div className='container'>
+                  {quizElements}
+                  <div className='end-div'>
+                    <ButtonGroup>
+                      <Button
+                        className='check mt-4'
+                        variant='outline-primary'
+                        onClick={checked ? handlePlayAgain: handleCheck}>
+                          {checked ? 'Play Again': 'Check answer'}
+                      </Button>
+                      <Button
+                        className='mt-4 d-flex '
+                        variant='outline-danger'
+                        onClick = {() => handleBackBtn()}
+                        >
+                          Back
+                      </Button>
+                    </ButtonGroup>
+                    {checked && <span className = 'score'>Your score is {correct}/5 correct answers</span>}
+                  </div>
+              </div>
+            :
             <Menu
-              start={start}
+            start={start}
             />
-        }
+          }
+        </div>
       </div>
-    </div>
+
   );
 }
 
