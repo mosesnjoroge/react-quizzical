@@ -55,7 +55,7 @@ function App() {
     questions.forEach(question => {
       if (question.selected === null){
         selected = false
-        return
+        return false
       }
     })
     if (!selected){
