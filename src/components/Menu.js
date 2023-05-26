@@ -1,13 +1,17 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { CIcon } from '@coreui/icons-react';
-import { cilPencil } from '@coreui/icons';
+// import { CIcon } from '@coreui/icons-react';
+// import { cilPencil, cilPenAlt } from '@coreui/icons';
 
 export default function Menu(props) {
 
   return(
+
       <div className='homepage'>
-        <CIcon icon={cilPencil} style={{color: "#5b4ce2;",}} />
+        {/* <div>
+          <CIcon icon={cilPencil} size = "l"/>
+          <CIcon icon={cilPenAlt } size = "l"/>
+        </div> */}
         <h2 className='page-title'>Welcome to Quizzical</h2>
         <div>
           <Button variant = 'outline-primary' onClick={() => props.start()}>Start</Button>
