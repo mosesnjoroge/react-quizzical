@@ -8,7 +8,6 @@ import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
 
 
-
 function App() {
 
   // states
