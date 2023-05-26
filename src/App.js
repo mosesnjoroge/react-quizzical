@@ -45,7 +45,6 @@ function App() {
   // stlyling for homepage
   const styles = {
     background: started ? 'white': 'white'
-    // 'linear-gradient(246.93deg, #7816DA 1.87%, rgba(230, 221, 239, 0) 99.99%, rgba(120, 22, 218, 0.01) 100%)'
   }
 
   // Method to check answer status
