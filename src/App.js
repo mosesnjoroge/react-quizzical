@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@coreui/coreui/dist/css/coreui.min.css'
 import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 function App() {
@@ -110,9 +109,7 @@ function App() {
     setStarted(false)
   }
   return (
-    // <i className="fa-solid fa-face-thinking fa-bounce" style={{color: '#594dda',}}/>
 
-    /* <FontAwesomeIcon icon='fa-solid fa-face-thinking' bounce size="lg" style={{color: "#594dda",}}/> */
       <div
         className="App"
         style = {styles}
