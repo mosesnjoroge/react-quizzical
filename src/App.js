@@ -9,7 +9,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Cloudinary } from '@cloudinary/url-gen';
-// import { AdvancedImage } from '@cloudinary/react';
+import { AdvancedImage } from '@cloudinary/react';
 import { fill } from '@cloudinary/url-gen/actions/resize';
 
 function App() {
@@ -52,29 +52,20 @@ function App() {
   }
 
   // cloudinary instance
-  const cloudName = process.env.REACT_APP_CLOUD_NAME
-  const apiKey = process.env.REACT_APP_Cloudinary_API_KEY
-  const apiSecret = process.env.REACT_APP_API_SECRET
+
+
   const cld = new Cloudinary({
     cloud: {
-      cloudName: cloudName,
-      api_key: apiKey,
-      api_secret: apiSecret
+      cloudName: 'dtxxea3qi'
     }
   });
 
   // Instantiate a CloudinaryImage object for the image.
-  const myImage = cld.image('yellow-blob-shape');
+  const myImage =  cld.image('yellow-blob-shape');
 
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  myImage.resize(fill().width(250).height(250));
+    myImage.resize(fill().width(250).height(250));
 
-  // Render the image in a React component.
-  // return (
-  //   <div>
-  //     <AdvancedImage cldImg={myImage} />
-  //   </div>
-  // )
 
   // Method to check answer status
   function handleCheck() {
@@ -170,6 +161,7 @@ function App() {
           />
         }
       </div>
+      <AdvancedImage cldImg={myImage} />
     </div>
   );
 }

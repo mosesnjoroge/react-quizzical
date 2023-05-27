@@ -3,9 +3,9 @@ import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 // import blobShape from '../images/blob-shape.png'
-import { AdvancedImage } from '@cloudinary/react';
+// import { AdvancedImage } from '@cloudinary/react';
 
-export default function Menu(props) {
+export default function Menu(props,myImage) {
 
 
   return(
@@ -20,7 +20,7 @@ export default function Menu(props) {
       </div>
       <div className='homepage-blob container '>
         {/* <img src={blobShape} alt="yellow blob from vecteezy.com" /> */}
-        <AdvancedImage cldImg={props.myImage} />
+        {/* <AdvancedImage cldImg={myImage} /> */}
       </div>
 
     </div>

@@ -51,7 +51,7 @@ export default function Quiz(props){
       </div>
       <div className='quiz-blob container '>
       {/* <AdvancedImage cldImg={myImage} /> */}
-        {/* <img src={blobShape} alt="yellow blob from vecteezy.com" /> */}
+      {/* <img src={blobShape} alt="yellow blob from vecteezy.com" /> */}
       </div>
     </div>
   )
