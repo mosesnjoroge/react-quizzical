@@ -1,6 +1,10 @@
 # React Quizzical App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Blob image was supplied by vecteezy.com
+<img width="927" alt="Screenshot 2023-05-27 at 4 27 32 PM" src="https://github.com/mosesnjoroge/react-quizzical/assets/102884273/88e85842-1546-4375-b1c0-4db![Uploading Screenshot 2023-05-27 at 4.24.23 PM.png…]()
+b89ac0821">
+<img width="1312" alt="Screenshot 2023-05-27 at 4 27 14 PM" src="https://github.com/mosesnjoroge/react-quizzical/assets/102884273/32adbd37-79af-4148-8f80-f777901ea80c">
+
 
 ## Dependencies
 
