@@ -17,9 +17,10 @@ export default function Menu(props) {
       <div>
         <Button variant = 'outline-primary' onClick={() => props.start()}>Start</Button>
       </div>
-      <div className='homepage-blob'>
-        <img src={blobShape} alt="yellow blob from vecteezy.com" /> <a href="https://www.vecteezy.com/free-png/element">Element PNGs by Vecteezy</a>
+      <div className='homepage-blob container '>
+        <img src={blobShape} alt="yellow blob from vecteezy.com" />
       </div>
+
     </div>
   )
 }

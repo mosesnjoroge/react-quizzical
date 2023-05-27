@@ -142,6 +142,7 @@ function App() {
             />
           }
         </div>
+        <a href="https://www.vecteezy.com/free-png/element">Element PNGs by Vecteezy</a>
       </div>
 
   );
