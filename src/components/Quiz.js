@@ -31,13 +31,13 @@ export default function Quiz(props){
       }
 
       return (
-          <Button
-            key={nanoid()}
-            id= {id}
-            variant="outline-primary"
-            onClick = {() => handleClick(answer)}>
-              {answer}
-          </Button>
+        <Button
+          key={nanoid()}
+          id= {id}
+          variant="outline-primary"
+          onClick = {() => handleClick(answer)}>
+            {answer}
+        </Button>
       )
     })
 
@@ -48,10 +48,6 @@ export default function Quiz(props){
       </div>
       <div className="d-flex justify-content-start gap-3 pr-3 m-2">
         {answersElements}
-      </div>
-      <div className='quiz-blob container '>
-      {/* <AdvancedImage cldImg={myImage} /> */}
-      {/* <img src={blobShape} alt="yellow blob from vecteezy.com" /> */}
       </div>
     </div>
   )

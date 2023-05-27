@@ -13,3 +13,12 @@
 .score {
   font-weight: 300;
 }
+
+.blob > img{
+  position:absolute;
+  left: 50px;
+  bottom: 40px;
+  height: 10%;
+  width: 10%;
+  z-index: -1;
+}

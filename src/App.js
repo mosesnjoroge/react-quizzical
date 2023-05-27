@@ -53,7 +53,6 @@ function App() {
 
   // cloudinary instance
 
-
   const cld = new Cloudinary({
     cloud: {
       cloudName: 'dtxxea3qi'
@@ -161,7 +160,9 @@ function App() {
           />
         }
       </div>
-      <AdvancedImage cldImg={myImage} />
+      <div className='blob container'>
+        <AdvancedImage cldImg={myImage} />
+      </div>
     </div>
   );
 }

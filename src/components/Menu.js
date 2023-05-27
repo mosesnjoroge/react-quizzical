@@ -2,10 +2,8 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
-// import blobShape from '../images/blob-shape.png'
-// import { AdvancedImage } from '@cloudinary/react';
 
-export default function Menu(props,myImage) {
+export default function Menu(props) {
 
 
   return(
@@ -18,11 +16,6 @@ export default function Menu(props,myImage) {
       <div>
         <Button variant = 'outline-primary' onClick={() => props.start()}>Start</Button>
       </div>
-      <div className='homepage-blob container '>
-        {/* <img src={blobShape} alt="yellow blob from vecteezy.com" /> */}
-        {/* <AdvancedImage cldImg={myImage} /> */}
-      </div>
-
     </div>
   )
 }
