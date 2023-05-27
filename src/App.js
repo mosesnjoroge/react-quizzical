@@ -44,7 +44,7 @@ function App() {
 
   // stlyling for homepage
   const styles = {
-    background: started ? 'white': '#c9c6ac'
+    background: started ? '#e3f1f1':'white'
   }
 
   // Method to check answer status
