@@ -1,6 +1,7 @@
 import React from "react";
 import { nanoid } from "nanoid";
 import Button from "react-bootstrap/Button";
+import blobShape from '../images/blob-shape.png'
 
 
 export default function Quiz(props){
@@ -41,12 +42,15 @@ export default function Quiz(props){
     })
 
   return (
-    <div className="question-container">
+    <div className="quiz-container">
       <div className="outline-danger">
         {props.q.question}
       </div>
       <div className="d-flex justify-content-start gap-3 pr-3 m-2">
         {answersElements}
+      </div>
+      <div className='quiz-blob container '>
+        <img src={blobShape} alt="yellow blob from vecteezy.com" />
       </div>
     </div>
   )
