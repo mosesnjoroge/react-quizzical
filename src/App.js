@@ -9,7 +9,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { AdvancedImage } from '@cloudinary/react';
+// import { AdvancedImage } from '@cloudinary/react';
 import { fill } from '@cloudinary/url-gen/actions/resize';
 
 function App() {
@@ -66,11 +66,11 @@ function App() {
   myImage.resize(fill().width(250).height(250));
 
   // Render the image in a React component.
-  return (
-    <div>
-      <AdvancedImage cldImg={myImage} />
-    </div>
-  )
+  // return (
+  //   <div>
+  //     <AdvancedImage cldImg={myImage} />
+  //   </div>
+  // )
 
   // Method to check answer status
   function handleCheck() {
