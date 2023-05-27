@@ -8,7 +8,7 @@ export default function Menu(props) {
 
   return(
 
-    <div className='homepage'>
+    <div className='homepage container'>
       <div className='homepage-icon d-flex'>
         <FontAwesomeIcon icon={faPenToSquare} bounce size = "xl" style={{color: "#594dda",}} />
       </div>
