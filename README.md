@@ -1,6 +1,21 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Blob image was supplied by vecteezy.com
+
+## Dependencies
+
+"@cloudinary/react": "^1.11.2",
+"@cloudinary/url-gen": "^1.10.1",
+"@coreui/coreui": "^4.2.6",
+"@coreui/react": "^4.8.0",
+"@fortawesome/fontawesome-svg-core": "^6.4.0",
+"@fortawesome/free-solid-svg-icons": "^6.4.0",
+"@fortawesome/react-fontawesome": "^0.2.0",
+"bootstrap": "^5.2.3",
+"dotenv": "^16.0.3",
+"nanoid": "^4.0.2",
+"react": "^18.2.0",
+"react-bootstrap": "^2.7.2",
 
 ## Available Scripts
 
