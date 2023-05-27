@@ -108,43 +108,40 @@ function App() {
     setStarted(false)
   }
   return (
-
-      <div
-        className="App"
-        style = {styles}
-        >
-        <div className='content-container mt-3'>
-          { started?
-              <div className='container'>
-                  {quizElements}
-                  <div className='end-div'>
-                    <ButtonGroup>
-                      <Button
-                        className='check mt-4'
-                        variant='outline-primary'
-                        onClick={checked ? handlePlayAgain: handleCheck}>
-                          {checked ? 'Play Again': 'Check answer'}
-                      </Button>
-                      <Button
-                        className='mt-4 d-flex '
-                        variant='outline-danger'
-                        onClick = {() => handleBackBtn()}
-                        >
-                          Back
-                      </Button>
-                    </ButtonGroup>
-                    {checked && <span className = 'score'>Your score is {correct}/5 correct answers</span>}
-                  </div>
-              </div>
-            :
-            <Menu
-            start={start}
-            />
-          }
-        </div>
-        <a href="https://www.vecteezy.com/free-png/element">Element PNGs by Vecteezy</a>
+    <div
+      className="App"
+      style = {styles}
+      >
+      <div className='content-container mt-3'>
+        { started?
+            <div className='container'>
+                {quizElements}
+                <div className='end-div'>
+                  <ButtonGroup>
+                    <Button
+                      className='check mt-4'
+                      variant='outline-primary'
+                      onClick={checked ? handlePlayAgain: handleCheck}>
+                        {checked ? 'Play Again': 'Check answer'}
+                    </Button>
+                    <Button
+                      className='mt-4 d-flex '
+                      variant='outline-danger'
+                      onClick = {() => handleBackBtn()}
+                      >
+                        Back
+                    </Button>
+                  </ButtonGroup>
+                  {checked && <span className = 'score'>Your score is {correct}/5 correct answers</span>}
+                </div>
+            </div>
+          :
+          <Menu
+          start={start}
+          />
+        }
       </div>
-
+    </div>
   );
 }
 
