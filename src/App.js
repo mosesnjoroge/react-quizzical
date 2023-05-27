@@ -8,8 +8,9 @@ import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
 import { fill } from '@cloudinary/url-gen/actions/resize';
-import { CloudinaryImage } from '@cloudinary/url-gen';
 
 function App() {
 
@@ -49,6 +50,27 @@ function App() {
   const styles = {
     background: started ? '#e3f1f1':'white'
   }
+
+  // cloudinary instance
+
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dtxxea3qi'
+    }
+  });
+
+  // Instantiate a CloudinaryImage object for the image.
+  const myImage = cld.image('yellow-blob-shape');
+
+  // Resize to 250 x 250 pixels using the 'fill' crop mode.
+  myImage.resize(fill().width(250).height(250));
+
+  // Render the image in a React component.
+  return (
+    <div>
+      <AdvancedImage cldImg={myImage} />
+    </div>
+  )
 
   // Method to check answer status
   function handleCheck() {
