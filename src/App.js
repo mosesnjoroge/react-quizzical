@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@coreui/coreui/dist/css/coreui.min.css'
 import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
 
@@ -129,7 +130,7 @@ function App() {
                       variant='outline-danger'
                       onClick = {() => handleBackBtn()}
                       >
-                        Back
+                        <FontAwesomeIcon icon={faArrowLeft} style={{color: "black",}} />
                     </Button>
                   </ButtonGroup>
                   {checked && <span className = 'score'>Your score is {correct}/5 correct answers</span>}
