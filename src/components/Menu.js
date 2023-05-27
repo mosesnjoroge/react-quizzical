@@ -17,7 +17,7 @@ export default function Menu(props) {
         <Button variant = 'outline-primary' onClick={() => props.start()}>Start</Button>
       </div>
       <div>
-        <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a>
+
       </div>
     </div>
   )
