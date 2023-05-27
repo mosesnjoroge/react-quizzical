@@ -8,6 +8,8 @@ import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { fill } from '@cloudinary/url-gen/actions/resize';
+import { CloudinaryImage } from '@cloudinary/url-gen';
 
 function App() {
 
