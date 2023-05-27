@@ -1,8 +1,6 @@
 import React from "react";
 import { nanoid } from "nanoid";
 import Button from "react-bootstrap/Button";
-// import blobShape from '../images/blob-shape.png'
-// import { AdvancedImage } from "@cloudinary/react";
 
 export default function Quiz(props){
 

@@ -21,7 +21,6 @@ function App() {
   const[checked, setChecked] = useState(false)
   const[count, setCount] = useState(0)
 
-
   // method to fetch questions from the API
   const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5)
 
@@ -52,7 +51,6 @@ function App() {
   }
 
   // cloudinary instance
-
   const cld = new Cloudinary({
     cloud: {
       cloudName: 'dtxxea3qi'
@@ -64,7 +62,6 @@ function App() {
 
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
     myImage.resize(fill().width(250).height(250));
-
 
   // Method to check answer status
   function handleCheck() {
@@ -130,7 +127,7 @@ function App() {
     <div
       className="App"
       style = {styles}
-      >
+    >
       <div className='content-container mt-3'>
         { started?
             <div className='container'>
@@ -147,8 +144,8 @@ function App() {
                       className='mt-4 d-flex '
                       variant='outline-danger'
                       onClick = {() => handleBackBtn()}
-                      >
-                        <FontAwesomeIcon icon={faArrowLeft} style={{color: "black",}} />
+                    >
+                      <FontAwesomeIcon icon={faArrowLeft} style={{color: "black",}} />
                     </Button>
                   </ButtonGroup>
                   {checked && <span className = 'score'>Your score is {correct}/5 correct answers</span>}
