@@ -52,10 +52,14 @@ function App() {
   }
 
   // cloudinary instance
-
+  const cloudName = process.env.REACT_APP_CLOUD_NAME
+  const apiKey = process.env.REACT_APP_Cloudinary_API_KEY
+  const apiSecret = process.env.REACT_APP_API_SECRET
   const cld = new Cloudinary({
     cloud: {
-      cloudName: 'dtxxea3qi'
+      cloudName: cloudName,
+      api_key: apiKey,
+      api_secret: apiSecret
     }
   });
 

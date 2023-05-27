@@ -1,8 +1,8 @@
 import React from "react";
 import { nanoid } from "nanoid";
 import Button from "react-bootstrap/Button";
-import blobShape from '../images/blob-shape.png'
-
+// import blobShape from '../images/blob-shape.png'
+// import { AdvancedImage } from "@cloudinary/react";
 
 export default function Quiz(props){
 
@@ -50,7 +50,8 @@ export default function Quiz(props){
         {answersElements}
       </div>
       <div className='quiz-blob container '>
-        <img src={blobShape} alt="yellow blob from vecteezy.com" />
+      {/* <AdvancedImage cldImg={myImage} /> */}
+        {/* <img src={blobShape} alt="yellow blob from vecteezy.com" /> */}
       </div>
     </div>
   )
