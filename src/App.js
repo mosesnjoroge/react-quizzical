@@ -48,7 +48,7 @@ function App() {
 
   // stlyling for homepage
   const styles = {
-    background: started ? '#e3f1f1':'white'
+    background: started ? 'white':'white'
   }
 
   // cloudinary instance

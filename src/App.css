@@ -8,13 +8,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .score {
   font-weight: 300;
 }
 
-.blob > img{
+.blob {
   position:absolute;
   left: 50px;
   bottom: 40px;
