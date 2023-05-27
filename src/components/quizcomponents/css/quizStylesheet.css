@@ -14,13 +14,5 @@
 .homepage-icon{
   position: absolute;
   right: 50px;
-  top: 40px;
-}
-
-.homepage-blob > img{
-  position:absolute;
-  left: 50px;
-  bottom: 40px;
-  height: 10%;
-  width: 10%;
+  top: 200px;
 }
