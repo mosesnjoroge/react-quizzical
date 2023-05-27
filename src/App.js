@@ -6,7 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@coreui/coreui/dist/css/coreui.min.css'
 import { nanoid } from 'nanoid';
 import { Button, ButtonGroup } from 'react-bootstrap';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from '@cloudinary/url-gen/actions/resize';
 
 function App() {
 
@@ -16,7 +20,6 @@ function App() {
   const[correct,setCorrect] = useState(0)
   const[checked, setChecked] = useState(false)
   const[count, setCount] = useState(0)
-
 
   // method to fetch questions from the API
   const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5)
@@ -44,8 +47,21 @@ function App() {
 
   // stlyling for homepage
   const styles = {
-    background: started ? 'white': '#c9c6ac'
+    background: started ? 'white':'white'
   }
+
+  // cloudinary instance
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dtxxea3qi'
+    }
+  });
+
+  // Instantiate a CloudinaryImage object for the image.
+  const myImage =  cld.image('yellow-blob-shape');
+
+  // Resize to 250 x 250 pixels using the 'fill' crop mode.
+    myImage.resize(fill().width(250).height(250));
 
   // Method to check answer status
   function handleCheck() {
@@ -108,43 +124,43 @@ function App() {
     setStarted(false)
   }
   return (
-
-      <div
-        className="App"
-        style = {styles}
-        >
-        <div className='content-container mt-3'>
-          { started?
-              <div className='container'>
-                  {quizElements}
-                  <div className='end-div'>
-                    <ButtonGroup>
-                      <Button
-                        className='check mt-4'
-                        variant='outline-primary'
-                        onClick={checked ? handlePlayAgain: handleCheck}>
-                          {checked ? 'Play Again': 'Check answer'}
-                      </Button>
-                      <Button
-                        className='mt-4 d-flex '
-                        variant='outline-danger'
-                        onClick = {() => handleBackBtn()}
-                        >
-                          Back
-                      </Button>
-                    </ButtonGroup>
-                    {checked && <span className = 'score'>Your score is {correct}/5 correct answers</span>}
-                  </div>
-              </div>
-            :
-            <Menu
-            start={start}
-            />
-          }
-        </div>
-        <a href="https://www.vecteezy.com/free-png/element">Element PNGs by Vecteezy</a>
+    <div
+      className="App"
+      style = {styles}
+    >
+      <div className='content-container mt-3'>
+        { started?
+            <div className='container'>
+                {quizElements}
+                <div className='end-div'>
+                  <ButtonGroup>
+                    <Button
+                      className='check mt-4'
+                      variant='outline-primary'
+                      onClick={checked ? handlePlayAgain: handleCheck}>
+                        {checked ? 'Play Again': 'Check answer'}
+                    </Button>
+                    <Button
+                      className='mt-4 d-flex '
+                      variant='outline-danger'
+                      onClick = {() => handleBackBtn()}
+                    >
+                      <FontAwesomeIcon icon={faArrowLeft} style={{color: "black",}} />
+                    </Button>
+                  </ButtonGroup>
+                  {checked && <span className = 'score'>Your score is {correct}/5 correct answers</span>}
+                </div>
+            </div>
+          :
+          <Menu
+          start={start}
+          />
+        }
       </div>
-
+      <div className='blob container'>
+        <AdvancedImage cldImg={myImage} />
+      </div>
+    </div>
   );
 }
 

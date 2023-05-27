@@ -1,11 +1,25 @@
+/* imported component rules  */
+
+@import 'components/quizcomponents/css/quizStylesheet.css';
+
 .App {
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
-/* imported component rules  */
+.score {
+  font-weight: 300;
+}
 
-@import 'components/quizcomponents/css/quizStylesheet.css'
+.blob {
+  position:absolute;
+  left: 50px;
+  bottom: 40px;
+  height: 10%;
+  width: 10%;
+  z-index: -1;
+}
