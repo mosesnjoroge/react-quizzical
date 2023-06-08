@@ -29,13 +29,17 @@ export default function Quiz(props){
       }
 
       return (
-        <Button
-          key={nanoid()}
-          id= {id}
-          variant="outline-primary"
-          onClick = {() => handleClick(answer)}>
-            {answer}
-        </Button>
+        <div className="d-grid gap-3 check--btn">
+          <Button
+            className="w-100"
+            key={nanoid()}
+            id= {id}
+            variant="outline-primary"
+            size="lg"
+            onClick = {() => handleClick(answer)}>
+              {answer}
+          </Button>
+        </div>
       )
     })
 
