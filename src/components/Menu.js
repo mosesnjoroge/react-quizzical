@@ -13,8 +13,15 @@ export default function Menu(props) {
         <FontAwesomeIcon icon={faPenToSquare} bounce size = "xl" style={{color: "#594dda",}} />
       </div>
       <h2 className='page-title'>Welcome to Quizzical</h2>
-      <div>
-        <Button variant = 'outline-primary' onClick={() => props.start()}>Start</Button>
+      <div className='d-grid gap-2 start--btn'>
+        <Button
+          className='w-100 mt-3'
+          variant = 'outline-primary'
+          size='lg'
+          onClick={() => props.start()}
+          >
+          Start
+        </Button>
       </div>
     </div>
   )
